@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ce0fonjnk0hmg"]
+
+[ext_resource type="PackedScene" uid="uid://cx0el0pn1t6c5" path="res://assets/Sword1.blend" id="1_pe5ua"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sgmha"]
+height = 4.626892
+
+[node name="WeaponTemplate" type="Node3D" unique_id=439496016]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=84560181]
+
+[node name="Sword1" parent="Area3D" unique_id=18390344 instance=ExtResource("1_pe5ua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23767054, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=836890863]
+transform = Transform3D(0.39417976, 0, 0, 0, 0.39417976, 0, 0, 0, 0.39417976, 0, 1.239595, 0)
+shape = SubResource("CylinderShape3D_sgmha")
