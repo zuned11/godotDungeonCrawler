@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://drnnur4hxjpsg"]
+
+[ext_resource type="PackedScene" uid="uid://dgnkawmpgnn8l" path="res://assets/hand_saw_1.glb" id="1_7c5v0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ddabk"]
+height = 6.0058594
+
+[node name="Sword" type="Node3D" unique_id=314188445]
+
+[node name="hitbox" type="Area3D" parent="." unique_id=540246443]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=283219508]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.0014648, 0)
+shape = SubResource("CylinderShape3D_ddabk")
+
+[node name="hand_saw_12" parent="." unique_id=1457247861 instance=ExtResource("1_7c5v0")]
+transform = Transform3D(7.125999e-08, -1, -6.689874e-08, -0.9382336, -4.371139e-08, -0.34600243, 0.34600243, 8.742278e-08, -0.9382336, 0.09003878, 0, -0.02837205)
