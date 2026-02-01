@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvyodrpxes4n5" path="res://scripts/InputComponent.gd" id="1_e4srk"]
 [ext_resource type="Script" uid="uid://bnmrtssno7pvp" path="res://scripts/Player.gd" id="1_vcr71"]
+[ext_resource type="PackedScene" uid="uid://ce0fonjnk0hmg" path="res://assets/BasicSword.tscn" id="3_yar5y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_urp3m"]
 
@@ -18,6 +19,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 [node name="CameraContainer" type="Node3D" parent="CollisionShape3D/Head" unique_id=493078164]
 
 [node name="Camera3D" type="Camera3D" parent="CollisionShape3D/Head/CameraContainer" unique_id=159724873]
+fov = 85.0
 
 [node name="InputComponent" type="Node" parent="." unique_id=862188497 node_paths=PackedStringArray("Character", "head")]
 unique_name_in_owner = true
@@ -25,3 +27,6 @@ script = ExtResource("1_e4srk")
 Character = NodePath("..")
 head = NodePath("../CollisionShape3D/Head")
 mouse_sensitivity = 100
+
+[node name="WeaponTemplate" parent="." unique_id=439496016 instance=ExtResource("3_yar5y")]
+transform = Transform3D(0.16459815, 0, -0.4721308, 0.045046665, 0.49771896, 0.015704542, 0.4699769, -0.047705717, 0.16384725, 0.44101524, 1.2526104, -0.5308614)
