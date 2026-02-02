@@ -10,8 +10,6 @@ func _process(_delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	print('starting phsyics')
 	if not is_on_floor():
 		velocity.y -= default_gravity * delta
-	print(self.velocity)
 	move_and_slide()

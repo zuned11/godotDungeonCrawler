@@ -52,4 +52,4 @@ transform = Transform3D(8.50494, 0, 0, 0, 8.50494, 0, 0, 0, 8.50494, -12, 1, 0)
 transform = Transform3D(5.7644215, 0, 0, 0, -2.9903414, 4.9281244, 0, -4.9281244, -2.9903414, -9.113148, 0.6501074, 13.891221)
 
 [node name="CharacterController" parent="." unique_id=1513262500 instance=ExtResource("1_2mgkc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2522628, 0.78560424, 0)
+transform = Transform3D(-0.68708754, 0, 0.72657466, 0, 1, 0, -0.72657466, 0, -0.68708754, 3.0664017, 0.28485274, -1.8155113)

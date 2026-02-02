@@ -44,8 +44,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("jump") and Character.is_on_floor():
 		Character.velocity.y = jump_velocity
-	
-	print(Character.velocity)
 
 
 func _unhandled_input(event: InputEvent) -> void:
