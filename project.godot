@@ -30,6 +30,15 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray()
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://levels/": "blue",
+"res://scenes/": "orange",
+"res://scripts/": "green"
+}
+
 [input]
 
 move_forward={

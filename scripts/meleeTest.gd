@@ -14,7 +14,10 @@ func _ready() -> void:
 	anim.play("equip")
 
 
-func _input(event: InputEvent) -> void:
+func _process(_delta: float) -> void:
+	if !anim.is_playing():
+		can_attack = true
+	
 	print("processing weapon")
 	if Input.is_action_pressed("attack") and can_attack and not anim.is_playing():
 		print("attacking")
@@ -24,10 +27,6 @@ func _input(event: InputEvent) -> void:
 		if !enemies_in_range.is_empty():
 			for e in enemies_in_range:
 				pass
-
-func _process(delta: float) -> void:
-	if !anim.is_playing():
-		can_attack = true
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") and not enemies_in_range.has(body):

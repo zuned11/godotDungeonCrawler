@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://i8chnthim68h"]
+
+[node name="EnemyTemplate" type="RigidBody3D" unique_id=1073752943]
