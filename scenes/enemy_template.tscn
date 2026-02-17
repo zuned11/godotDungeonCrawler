@@ -1,3 +1,11 @@
 [gd_scene format=3 uid="uid://i8chnthim68h"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_evm4f"]
+
 [node name="EnemyTemplate" type="RigidBody3D" unique_id=1073752943]
+axis_lock_angular_y = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=76855340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_evm4f")
+debug_color = Color(0, 0.6, 0.7019608, 0.41960785)

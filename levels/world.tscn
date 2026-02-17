@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhdgd0v87xfjn"]
 
 [ext_resource type="PackedScene" uid="uid://cyfp4q2o20nps" path="res://scenes/character_controller.tscn" id="1_2mgkc"]
+[ext_resource type="PackedScene" uid="uid://i8chnthim68h" path="res://scenes/enemy_template.tscn" id="2_tsgde"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -53,3 +54,6 @@ transform = Transform3D(5.7644215, 0, 0, 0, -2.9903414, 4.9281244, 0, -4.9281244
 
 [node name="CharacterController" parent="." unique_id=1513262500 instance=ExtResource("1_2mgkc")]
 transform = Transform3D(-0.68708754, 0, 0.72657466, 0, 1, 0, -0.72657466, 0, -0.68708754, 3.0664017, 0.28485274, -1.8155113)
+
+[node name="EnemyTemplate" parent="." unique_id=1073752943 instance=ExtResource("2_tsgde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2062054, 1.650846, 7.380758)

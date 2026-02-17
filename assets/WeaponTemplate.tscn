@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ce0fonjnk0hmg"]
 
-[ext_resource type="PackedScene" uid="uid://cx0el0pn1t6c5" path="res://assets/Sword1.blend" id="1_pe5ua"]
-[ext_resource type="Script" uid="uid://dj4ht0s0carl0" path="res://scripts/WeaponComponent.gd" id="1_sgmha"]
+[ext_resource type="PackedScene" uid="uid://tnky13tnc21k" path="res://assets/sword1.glb" id="1_ks08k"]
+[ext_resource type="Script" uid="uid://dj4ht0s0carl0" path="res://scripts/WeaponComponent.gd" id="2_mua40"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgmha"]
 size = Vector3(1.5, 2.5, 0.5)
@@ -11,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword1:rotation")
+tracks/0/path = NodePath("sword1:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword1:position")
+tracks/1/path = NodePath("sword1:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -38,7 +38,7 @@ resource_name = "attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword1:rotation")
+tracks/0/path = NodePath("sword1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,7 +50,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword1:position")
+tracks/1/path = NodePath("sword1:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -66,7 +66,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword1:position")
+tracks/0/path = NodePath("sword1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +78,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword1:rotation")
+tracks/1/path = NodePath("sword1:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -97,13 +97,12 @@ _data = {
 
 [node name="WeaponTemplate" type="Node3D" unique_id=439496016]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-script = ExtResource("1_sgmha")
 
-[node name="Sword1" parent="." unique_id=18390344 instance=ExtResource("1_pe5ua")]
+[node name="sword1" parent="." unique_id=78025819 instance=ExtResource("1_ks08k")]
 
-[node name="Hitbox" type="Area3D" parent="Sword1" unique_id=84560181]
+[node name="Hitbox" type="Area3D" parent="sword1" unique_id=84560181]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sword1/Hitbox" unique_id=836890863]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sword1/Hitbox" unique_id=836890863]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_sgmha")
 
@@ -112,8 +111,10 @@ shape = SubResource("BoxShape3D_sgmha")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1849544708]
 libraries/ = SubResource("AnimationLibrary_psxu6")
 
-[node name="WeaponComponent" type="Node" parent="." unique_id=1689024915]
-script = ExtResource("1_sgmha")
+[node name="WeaponComponent" type="Node" parent="." unique_id=1689024915 node_paths=PackedStringArray("weapon_area", "animation_player")]
+script = ExtResource("2_mua40")
+weapon_area = NodePath("../sword1/Hitbox")
+animation_player = NodePath("../AnimationPlayer")
 metadata/_custom_type_script = "uid://dj4ht0s0carl0"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_anim_animation_finished"]

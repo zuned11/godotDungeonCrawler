@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvyodrpxes4n5" path="res://scripts/InputComponent.gd" id="1_e4srk"]
 [ext_resource type="Script" uid="uid://bnmrtssno7pvp" path="res://scripts/PlayerController.gd" id="1_vcr71"]
-[ext_resource type="PackedScene" uid="uid://ce0fonjnk0hmg" path="res://assets/BasicSword.tscn" id="3_yar5y"]
+[ext_resource type="PackedScene" uid="uid://ce0fonjnk0hmg" path="res://assets/WeaponTemplate.tscn" id="3_yar5y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_urp3m"]
 
