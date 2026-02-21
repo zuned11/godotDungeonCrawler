@@ -26,24 +26,42 @@ class_name InputComponent extends Node
 @export_group("Movement settings")
 
 @export_subgroup("Horizontal movement")
-@export var max_speed: float = 5.0
-@export var jump_velocity: float = 5
+@export var max_speed: float = 4.0
+@export var horizontal_acceleration: float = 5.0
+@export var horizontal_braking_speed: float = 7.5
+@export var jump_velocity: float = 3
 
 
 func _ready():
 	Input.set_use_accumulated_input(false)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	#process lateral movement, need to transform to basis
 	var movement_vector = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var movement = Character.transform.basis * Vector3(movement_vector.x, 0, movement_vector.y)
+	#if no movement vector, we apply braking force to approach no velocity
+	var movement := Character.transform.basis * Vector3(movement_vector.x, 0, movement_vector.y)
 	
-	Character.velocity.x = movement.x * max_speed
-	Character.velocity.z = movement.z * max_speed
-	
+	var current_speed = Character.velocity.length() + (delta * horizontal_acceleration)
+		
+	if movement == Vector3(0, 0, 0):
+		print('applying the brakes')
+		#movement = Vector3(-Character.velocity.x, 0, -Character.velocity.z)
+		Character.velocity.x = clamp(-Character.velocity.x * horizontal_braking_speed * delta, -max_speed, max_speed)
+		Character.velocity.z = clamp(-Character.velocity.z * horizontal_braking_speed * delta, -max_speed, max_speed)
+		print(Character.velocity)
+	else:
+		print('applying the gas')
+		Character.velocity.x = clamp(movement.x * current_speed, -max_speed, max_speed)
+		Character.velocity.z = clamp(movement.z * current_speed, -max_speed, max_speed)
+	#print_debug(Character.velocity)
 	if Input.is_action_pressed("jump") and Character.is_on_floor():
 		Character.velocity.y = jump_velocity
+	#gravity if necessary
+	elif not Character.is_on_floor():
+		Character.velocity.y = clamp(Character.velocity.y - (7.5 * delta), -100, 100)
+	#print(Character.position)
+	
 
 
 func _unhandled_input(event: InputEvent) -> void:

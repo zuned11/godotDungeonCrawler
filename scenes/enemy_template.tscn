@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://i8chnthim68h"]
 
+[ext_resource type="Script" uid="uid://c608d7u0mf3lf" path="res://scripts/HealthComponent.gd" id="1_v32xs"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_evm4f"]
 
 [node name="EnemyTemplate" type="RigidBody3D" unique_id=1073752943]
@@ -9,3 +11,8 @@ axis_lock_angular_y = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_evm4f")
 debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
+
+[node name="HealthComponent" type="Node" parent="." unique_id=255107353]
+script = ExtResource("1_v32xs")
+maxHealth = 100.0
+metadata/_custom_type_script = "uid://c608d7u0mf3lf"

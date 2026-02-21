@@ -15,16 +15,16 @@ var attack_on_cooldown: bool = true
 func _ready() -> void:
 	animation_player.play("equip")
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") and Input.MOUSE_MODE_CAPTURED:
-		animation_player.play("attack")
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_accept") and Input.MOUSE_MODE_CAPTURED:
+		#animation_player.play("attack")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(_delta: float) -> void:
 	if !animation_player.is_playing():
 		attack_on_cooldown = false
 		
-	if Input.is_action_pressed("attack") and not attack_on_cooldown:
+	if Input.is_action_pressed("attack") and not attack_on_cooldown and Input.MOUSE_MODE_CAPTURED:
 		print("attacking")
 		animation_player.play("attack")
 		attack_on_cooldown = true
