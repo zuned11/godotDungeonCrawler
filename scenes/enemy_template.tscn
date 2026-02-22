@@ -1,18 +1,27 @@
 [gd_scene format=3 uid="uid://i8chnthim68h"]
 
+[ext_resource type="Script" uid="uid://coh68unqmc6ms" path="res://scripts/EnemyTemplate.gd" id="1_cw80a"]
 [ext_resource type="Script" uid="uid://c608d7u0mf3lf" path="res://scripts/HealthComponent.gd" id="1_v32xs"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_evm4f"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oqxhu"]
 
-[node name="EnemyTemplate" type="RigidBody3D" unique_id=1073752943]
-axis_lock_angular_y = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijien"]
+albedo_color = Color(0.83137256, 0.07058824, 0.13725491, 1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=76855340]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0qlac"]
+material = SubResource("StandardMaterial3D_ijien")
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=2067581678]
+script = ExtResource("1_cw80a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1521153821]
+shape = SubResource("CapsuleShape3D_oqxhu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1017779481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_evm4f")
-debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
+mesh = SubResource("CapsuleMesh_0qlac")
 
-[node name="HealthComponent" type="Node" parent="." unique_id=255107353]
+[node name="HealthComponent" type="Node" parent="." unique_id=773712449]
 script = ExtResource("1_v32xs")
-maxHealth = 100.0
+maxHealth = 30.0
 metadata/_custom_type_script = "uid://c608d7u0mf3lf"

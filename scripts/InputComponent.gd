@@ -38,29 +38,26 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	#process lateral movement, need to transform to basis
-	var movement_vector = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	#if no movement vector, we apply braking force to approach no velocity
-	var movement := Character.transform.basis * Vector3(movement_vector.x, 0, movement_vector.y)
-	
+	var input_vector = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var localized_input := Character.transform.basis * Vector3(input_vector.x, 0, input_vector.y)
+	# we want to maintain momentum in all directions and just redirect it
+	# apply the acceleration to the movement before applying to the vector
 	var current_speed = Character.velocity.length() + (delta * horizontal_acceleration)
-		
-	if movement == Vector3(0, 0, 0):
-		print('applying the brakes')
+
+	#if no movement vector, we apply braking force to approach no velocity
+	if localized_input == Vector3(0, 0, 0):
 		#movement = Vector3(-Character.velocity.x, 0, -Character.velocity.z)
 		Character.velocity.x = clamp(-Character.velocity.x * horizontal_braking_speed * delta, -max_speed, max_speed)
 		Character.velocity.z = clamp(-Character.velocity.z * horizontal_braking_speed * delta, -max_speed, max_speed)
-		print(Character.velocity)
-	else:
-		print('applying the gas')
-		Character.velocity.x = clamp(movement.x * current_speed, -max_speed, max_speed)
-		Character.velocity.z = clamp(movement.z * current_speed, -max_speed, max_speed)
-	#print_debug(Character.velocity)
+	else: #if input, we apply our updated magnitude to the new vector
+		Character.velocity.x = clamp(localized_input.x * current_speed, -max_speed, max_speed)
+		Character.velocity.z = clamp(localized_input.z * current_speed, -max_speed, max_speed)
+		
 	if Input.is_action_pressed("jump") and Character.is_on_floor():
 		Character.velocity.y = jump_velocity
 	#gravity if necessary
 	elif not Character.is_on_floor():
 		Character.velocity.y = clamp(Character.velocity.y - (7.5 * delta), -100, 100)
-	#print(Character.position)
 	
 
 
