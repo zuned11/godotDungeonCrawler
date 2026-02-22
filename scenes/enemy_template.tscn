@@ -11,14 +11,13 @@ albedo_color = Color(0.83137256, 0.07058824, 0.13725491, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0qlac"]
 material = SubResource("StandardMaterial3D_ijien")
 
-[node name="RigidBody3D" type="RigidBody3D" unique_id=2067581678]
+[node name="RigidBody3D" type="CharacterBody3D" unique_id=414881413]
 script = ExtResource("1_cw80a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1521153821]
 shape = SubResource("CapsuleShape3D_oqxhu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1017779481]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_0qlac")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=773712449]

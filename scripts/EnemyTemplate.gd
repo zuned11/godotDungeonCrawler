@@ -1,4 +1,4 @@
-class_name EnemyTemplate extends Node
+extends CharacterBody3D
 
 @onready var health_component = get_node("HealthComponent")
 #@export var defense : DefenseComponent
@@ -13,6 +13,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	pass
+	
+	
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y -= 9.8 * delta
+	move_and_slide()
 
 
 func die() -> void:

@@ -19,6 +19,13 @@ glow_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_036b0"]
 albedo_color = Color(1, 0.5254902, 1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tsgde"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsgde"]
+albedo_color = Color(0.32941177, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pmfem"]
+
 [node name="World" type="Node3D" unique_id=785883338]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=925664837]
@@ -61,3 +68,13 @@ platform_on_leave = 1
 
 [node name="EnemyTemplate" parent="." unique_id=1073752943 instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.809197, 1.650846, 5.3264923)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=639567383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.919869, 4.417719, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=123417965]
+shape = SubResource("BoxShape3D_tsgde")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=2103855266]
+material_override = SubResource("StandardMaterial3D_tsgde")
+mesh = SubResource("BoxMesh_pmfem")
