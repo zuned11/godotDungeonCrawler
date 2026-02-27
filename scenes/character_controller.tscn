@@ -23,6 +23,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 [node name="Camera3D" type="Camera3D" parent="CollisionShape3D/Head/CameraContainer" unique_id=159724873]
 fov = 85.0
 
+[node name="SpotLight3D" type="SpotLight3D" parent="CollisionShape3D/Head/CameraContainer" unique_id=1551085305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21150225, 0.03368318, -0.7046652)
+light_color = Color(1, 0.7764706, 0.41568628, 1)
+spot_angle = 37.1196
+
 [node name="WeaponSlot" type="Node3D" parent="CollisionShape3D/Head" unique_id=1966613956]
 script = ExtResource("2_2rfdc")
 

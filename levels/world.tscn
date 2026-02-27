@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cyfp4q2o20nps" path="res://scenes/character_controller.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://i8chnthim68h" path="res://scenes/enemy_template.tscn" id="2_tsgde"]
+[ext_resource type="MeshLibrary" uid="uid://b05nal083bcg" path="res://assets/tileset.meshlib" id="3_pmfem"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -11,10 +12,19 @@ ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sky_material = SubResource("ProceduralSkyMaterial_fj7yv")
 
 [sub_resource type="Environment" id="Environment_aqk2v"]
-background_mode = 2
+background_mode = 1
+background_color = Color(1, 0.7764706, 0.41568628, 1)
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_tlwt5")
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.7764706, 0.41568628, 1)
+ambient_light_energy = 0.05
 tonemap_mode = 2
-glow_enabled = true
+fog_enabled = true
+fog_light_energy = 0.02
+fog_density = 0.1
+volumetric_fog_density = 0.2528
+volumetric_fog_length = 12.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_036b0"]
 albedo_color = Color(1, 0.5254902, 1, 1)
@@ -31,11 +41,8 @@ albedo_color = Color(0.32941177, 1, 1, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=925664837]
 environment = SubResource("Environment_aqk2v")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1935502525]
-transform = Transform3D(0.14953531, -0.9053672, 0.3974285, 0.25167254, 0.423561, 0.87020516, -0.95619047, -0.03010457, 0.2911934, 6.5786614, 22.31638, 0)
-shadow_enabled = true
-
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1232878871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80.41818)
 use_collision = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1096684398]
@@ -67,10 +74,11 @@ transform = Transform3D(-0.68708754, 0, 0.72657466, 0, 1, 0, -0.72657466, 0, -0.
 platform_on_leave = 1
 
 [node name="EnemyTemplate" parent="." unique_id=1073752943 instance=ExtResource("2_tsgde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.809197, 1.650846, 5.3264923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.074636, 1.650846, 0.5273266)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=639567383]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.919869, 4.417719, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.863716, 1.5608101, 0)
+mass = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=123417965]
 shape = SubResource("BoxShape3D_tsgde")
@@ -78,3 +86,12 @@ shape = SubResource("BoxShape3D_tsgde")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=2103855266]
 material_override = SubResource("StandardMaterial3D_tsgde")
 mesh = SubResource("BoxMesh_pmfem")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=700559132]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh_library = ExtResource("3_pmfem")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65534, 1, 2, 65534, 0, 2, 65535, 0, 2, 65535, 65535, 2, 65535, 65534, 2, 65534, 65534, 2, 65534, 65535, 2, 0, 65534, 2, 1, 65534, 2, 1, 65535, 2, 1, 0, 2, 1, 1, 2, 0, 1, 2, 65535, 1, 2, 0, 0, 2, 0, 65535, 2, 2, 2, 1441793, 65533, 2, 655361, 2, 65533, 1, 65533, 65533, 1048577, 65534, 65533, 0, 65535, 65533, 0, 0, 65533, 0, 1, 65533, 0, 2, 65534, 1441792, 2, 65535, 1441792, 2, 0, 1441792, 2, 1, 1441792, 1, 2, 655360, 0, 2, 655360, 65535, 2, 655360, 65534, 2, 655360, 65533, 1, 1048576, 65533, 65534, 1048576, 65533, 65535, 1048579, 65533, 0, 655363, 65532, 0, 655360, 65531, 0, 655360, 65530, 0, 655360, 65529, 0, 655360, 65528, 0, 655360, 65532, 65535, 0, 65531, 65535, 0, 65530, 65535, 0, 65529, 65535, 0, 65528, 65535, 0, 65527, 65535, 3, 65527, 0, 1441795, 65527, 1, 1441793, 65526, 2, 1441793, 65525, 3, 1441793, 65527, 65534, 1, 65526, 65533, 1, 65525, 65532, 1, 65524, 65532, 0, 65523, 65532, 0, 65522, 65532, 0, 65524, 3, 655360, 65523, 3, 655360, 65522, 3, 655360, 65525, 2, 1441795, 65526, 1, 1441795, 65526, 65534, 3, 65525, 65533, 3, 65526, 0, 1441794, 65526, 65535, 1441794, 65525, 65535, 1441794, 65525, 0, 1441794, 65525, 1, 1441794, 65524, 1, 1441794, 65524, 2, 1441794, 65524, 0, 1441794, 65524, 65535, 1441794, 65524, 65534, 1441794, 65524, 65533, 1441794, 65525, 65534, 1441794, 65523, 65533, 1441794, 65522, 65533, 1441794, 65522, 65534, 1441794, 65522, 65535, 1441794, 65522, 0, 1441794, 65522, 1, 1441794, 65522, 2, 1441794, 65523, 2, 1441794, 65523, 1, 1441794, 65523, 0, 1441794, 65523, 65535, 1441794, 65523, 65534, 1441794, 65521, 65532, 1048577, 65520, 65533, 1048577, 65519, 65534, 1048577, 65521, 3, 655361, 65520, 2, 655361, 65519, 1, 655361, 65520, 65534, 1048579, 65521, 65533, 1048579, 65521, 2, 655363, 65520, 1, 655363, 65519, 0, 1048576, 65519, 65535, 1048576, 65521, 65534, 1048578, 65521, 65535, 1048578, 65521, 0, 1048578, 65521, 1, 1048578, 65520, 0, 1048578, 65520, 65535, 1048578)
+}
