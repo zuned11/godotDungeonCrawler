@@ -2,4 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b3a4but2tlffr" path="res://assets/tilset.glb" id="1_2hcx8"]
 
-[node name="tilset" unique_id=2067726377 instance=ExtResource("1_2hcx8")]
+[node name="tilset" unique_id=1609781965 instance=ExtResource("1_2hcx8")]
+
+[node name="StaticBody3D" parent="wall-corner-in" parent_id_path=PackedInt32Array(1763863055) index="0" unique_id=269411973]
+visible = false
