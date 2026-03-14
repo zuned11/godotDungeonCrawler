@@ -1,20 +1,41 @@
 extends Node
 
-var current_state = null
+@export var initial_state: State = null
+
+@onready var state: State = (func get_initial_state() -> State:
+		return initial_state if initial_state != null else get_child(0)
+		).call()
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	#give every state a reference to the state machine
+	for state_node: State in find_children("*", "State"):
+		state_node.state_exited.connect(_transition_to_next_state)
+		#state machines usuallly access data from the root node of the scene they're part of: the owner
+		# we wait for the owner to be ready to gaurantee all the data and nodes the states may need are available
+		await owner.ready
+		state.enter("")
+
+
+func _unhandled_input(event: InputEvent) -> void:
+		state.handle_input(event)
 
 
 func _process(delta: float) -> void:
-	pass
+		state.update(delta)
 
 
-func _on_state_entered() -> void:
-	pass
+func _physics_process(delta: float) -> void:
+		state.physics_update(delta)
 
+func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
+		if not has_node(target_state_path):
+				printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
+				return
 
-func _on_state_exited() -> void:
-	pass
-
+		var previous_state_path := state.name
+		state.exit()
+		state = get_node(target_state_path)
+		state.enter(previous_state_path, data)
 
 
