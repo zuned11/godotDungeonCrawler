@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwrf2bsq0rba2"]
 
-[ext_resource type="Script" uid="uid://c1mpogv7ax01n" path="res://HPBarController.gd" id="1_jna2d"]
+[ext_resource type="Script" uid="uid://c1mpogv7ax01n" path="res://scripts/components/HPBarController.gd" id="1_jna2d"]
 
 [node name="GameHUD" type="Control" unique_id=1856547232]
 layout_mode = 3

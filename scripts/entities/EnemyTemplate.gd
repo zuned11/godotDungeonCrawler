@@ -1,7 +1,15 @@
 extends CharacterBody3D
 
-@onready var health_component = get_node("HealthComponent")
 #@export var defense : DefenseComponent
+
+@onready var health_component = get_node("HealthComponent")
+@onready var nav_agent = $NavigationAgent3D
+
+
+var player = null
+
+const SPEED := 5.0
+
 
 
 func _ready() -> void:
@@ -11,15 +19,20 @@ func _ready() -> void:
 		health_component.entity_died.connect(die)
 
 
+
+
 func _process(_delta: float) -> void:
 	pass
 	
 	
 func _physics_process(delta: float) -> void:
+	velocity = Vector3.ZERO
 	if not is_on_floor():
 		velocity.y -= 9.8 * delta
-	move_and_slide()
-
+#	nav_agent.set_target_position(player.global_position)
+#	var next_nav_point = nav_agent.get_next_path_position()
+#	velocity = (next_nav_point - global_position).normalized() * SPEED
+	
 
 func die() -> void:
 	queue_free()

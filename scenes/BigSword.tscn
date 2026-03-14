@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ce0fonjnk0hmg"]
 
 [ext_resource type="PackedScene" uid="uid://tnky13tnc21k" path="res://assets/sword1.glb" id="1_148c7"]
-[ext_resource type="Script" uid="uid://dj4ht0s0carl0" path="res://scripts/WeaponComponent.gd" id="2_edtmg"]
+[ext_resource type="Script" uid="uid://dj4ht0s0carl0" path="res://scripts/components/WeaponComponent.gd" id="2_edtmg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgmha"]
 size = Vector3(1.5, 2.5, 0.5)
