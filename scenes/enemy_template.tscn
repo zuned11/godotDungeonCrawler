@@ -14,25 +14,37 @@ material = SubResource("StandardMaterial3D_ijien")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ijien"]
 
-[node name="RigidBody3D" type="CharacterBody3D" unique_id=414881413]
+[sub_resource type="BoxMesh" id="BoxMesh_oqxhu"]
+
+[node name="RigidBody3D" type="CharacterBody3D" unique_id=414881413 node_paths=PackedStringArray("player")]
 script = ExtResource("1_cw80a")
+player = NodePath("RayCast3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1521153821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_oqxhu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1017779481]
 mesh = SubResource("CapsuleMesh_0qlac")
+
+[node name="HurtBox" type="Area3D" parent="CollisionShape3D" unique_id=1250381986 node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_oqxhu")
+health_component = NodePath("../../HealthComponent")
+metadata/_custom_type_script = "uid://dxtf6nfx5eex"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionShape3D/HurtBox" unique_id=1090311730]
+shape = SubResource("CapsuleShape3D_ijien")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D" unique_id=17614043]
+transform = Transform3D(0.38569975, 0, 0, 0, 0.25329798, 0, 0, 0, 0.5954956, 0.32969463, 0.61538184, 0)
+mesh = SubResource("BoxMesh_oqxhu")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=8025780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="HealthComponent" type="Node" parent="." unique_id=773712449]
 script = ExtResource("1_v32xs")
 maxHealth = 30.0
 metadata/_custom_type_script = "uid://c608d7u0mf3lf"
 
-[node name="HurtBox" type="Area3D" parent="." unique_id=1250381986]
-script = ExtResource("3_oqxhu")
-metadata/_custom_type_script = "uid://dxtf6nfx5eex"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" unique_id=1090311730]
-shape = SubResource("CapsuleShape3D_ijien")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1312008680]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1015831007]

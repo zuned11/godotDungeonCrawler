@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://canu3fekxtmj7"]
+
+[sub_resource type="GDScript" id="GDScript_ibg4l"]
+script/source = "class_name WeaponResource
+extends Resource
+
+@export var damage: float
+@export var
+"
+
+[resource]
+script = SubResource("GDScript_ibg4l")
+damage = null

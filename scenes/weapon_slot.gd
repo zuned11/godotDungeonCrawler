@@ -1,6 +1,6 @@
 extends Node3D
 
-
+@export var current_weapon: WeaponResource = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

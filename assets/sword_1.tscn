@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://jpt3qo6077o8"]
+
+[ext_resource type="PackedScene" uid="uid://tnky13tnc21k" path="res://assets/sword1.glb" id="1_yg2nc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc0lb"]
+use_z_clip_scale = true
+z_clip_scale = 0.15
+use_fov_override = true
+
+[node name="sword1" unique_id=78025819 instance=ExtResource("1_yg2nc")]
+
+[node name="Sword" parent="." index="0" unique_id=1400689434]
+surface_material_override/0 = SubResource("StandardMaterial3D_wc0lb")
