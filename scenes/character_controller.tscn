@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://nvkaofkc5jxe" path="res://scenes/character_controller.gd" id="1_1rga4"]
 [ext_resource type="Script" uid="uid://bvyodrpxes4n5" path="res://scripts/components/InputComponent.gd" id="1_e4srk"]
 [ext_resource type="Script" uid="uid://jubdt7cgwxi7" path="res://scenes/weapon_slot.gd" id="2_2rfdc"]
+[ext_resource type="Resource" uid="uid://canu3fekxtmj7" path="res://scripts/objects/WeaponResource.tres" id="3_1rga4"]
 [ext_resource type="Script" uid="uid://c608d7u0mf3lf" path="res://scripts/components/HealthComponent.gd" id="4_1rga4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_urp3m"]
@@ -232,6 +233,7 @@ fov = 85.0
 
 [node name="WeaponSlot" type="Node3D" parent="CollisionShape3D/Head" unique_id=1966613956]
 script = ExtResource("2_2rfdc")
+current_weapon = ExtResource("3_1rga4")
 
 [node name="BigSword" type="Node3D" parent="CollisionShape3D/Head/WeaponSlot" unique_id=439496016]
 transform = Transform3D(-0.21595685, -0.054453015, 0.44765788, -0.122247584, 0.4848253, -5.3436113e-09, -0.4340717, -0.10945018, -0.22271623, 0.23661846, -0.6028774, -0.460461)

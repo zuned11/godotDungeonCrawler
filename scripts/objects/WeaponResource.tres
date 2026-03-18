@@ -4,10 +4,19 @@
 script/source = "class_name WeaponResource
 extends Resource
 
-@export var damage: float
-@export var
+enum DAMAGE_TYPES { STAB, SLASH, CRUSH, PURE}
+
+@export_category(\"Appearance\")
+@export var weaponModel: Mesh
+#@export_enum(\"Damage Type\", \"DAMAGE_TYPES\")
+
+@export_category(\"Damage Attributes\")
+@export var damage: float  = 1
+@export_subgroup(\"Range\", \"range\")
+@export var range_y: float = 2.0
+@export var range_x: float = 2.5
+@export var range_z: float = 2.5
 "
 
 [resource]
 script = SubResource("GDScript_ibg4l")
-damage = null
